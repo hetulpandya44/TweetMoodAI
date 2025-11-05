@@ -1,0 +1,86 @@
+services:
+  # FastAPI Backend Service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: tweetmoodai-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # API Configuration
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      # Model Configuration (can be overridden via .env)
+      - MODEL_PATH=/app/models/sentiment_model
+      # Logging
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DEBUG=${DEBUG:-False}
+    volumes:
+      # Mount models directory for persistence
+      - ./models:/app/models:rw
+      # Mount data directory for data persistence
+      - ./data:/app/data:rw
+      # Mount app directory for development (optional - remove in production)
+      - ./app:/app/app:ro
+      # Logs directory
+      - ./logs:/app/logs:rw
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-level info
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/healthz')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - tweetmoodai-network
+
+  # Streamlit Frontend Service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: tweetmoodai-frontend
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      # UI Configuration
+      - API_URL=http://backend:8000
+      - FASTAPI_URL=http://backend:8000
+      - API_TIMEOUT=${API_TIMEOUT:-60}
+    volumes:
+      # Mount UI directory for development (optional - remove in production)
+      - ./ui:/app/ui:ro
+      # Mount data directory for file uploads
+      - ./data:/app/data:rw
+      # Logs directory
+      - ./logs:/app/logs:rw
+    command: streamlit run ui/app.py --server.port=8501 --server.address=0.0.0.0 --server.headless=true --server.enableCORS=false --server.enableXsrfProtection=false
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "streamlit"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - tweetmoodai-network
+
+networks:
+  tweetmoodai-network:
+    driver: bridge
+
+volumes:
+  # Named volumes for data persistence (optional)
+  models-data:
+    driver: local
+  app-data:
+    driver: local

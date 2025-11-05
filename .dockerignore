@@ -1,0 +1,72 @@
+# Python
+venv/
+env/
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Git
+.git/
+.gitignore
+.github/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation (not needed in container)
+*.md
+!README.md
+
+# Docker files (don't copy into image)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Data files (will be mounted as volumes)
+# Keep structure but don't copy large files
+data/*.json
+data/*.csv
+data/raw/
+
+# Temporary files
+*.tmp
+*.temp
+temp_*
+
+# Model checkpoints (large files, will be mounted)
+models/*.pt
+models/*.pth
+models/checkpoints/
+models/logs/
+
+# Tests
+tests/
+*.test.py
+*_test.py
+
+# CI/CD
+.github/
+
+# Keep model structure and configs
+!models/.gitkeep
+!data/.gitkeep

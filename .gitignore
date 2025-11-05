@@ -1,0 +1,111 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files (add patterns as needed)
+data/raw/
+data/processed/*.csv
+data/processed/*.json
+!data/processed/.gitkeep
+
+# Model files (can be large)
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.onnx
+!models/.gitkeep
+
+# Model checkpoints (too large for GitHub - keep only final model)
+models/checkpoints/
+models/**/checkpoint-*/
+*.optimizer.pt
+*.scheduler.pt
+*.rng_state.pth
+
+# Large model files (too large for GitHub - use Git LFS or exclude)
+# models/sentiment_model/model.safetensors  # 255 MB - too large for GitHub
+*.safetensors
+*.bin
+!models/sentiment_model/config.json
+!models/sentiment_model/*.json
+!models/sentiment_model/vocab.txt
+
+# Git backup directories (contain old git objects with large files)
+.git_backup_*/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# Streamlit cache and temporary files
+.streamlit/
+*.log
+
+# Test outputs
+__pycache__/
+.coverage
+htmlcov/
+pytest_cache/
+
+# Render and Docker build artifacts
+*.tar
+docker-compose.override.yml
+render*.yaml
+
+# Frontend build artifacts (React/Streamlit UI)
+ui/node_modules/
+ui/build/
+ui/dist/
+
+# Backend temp files
+app/__pycache__/
+scripts/__pycache__/
+

@@ -1,0 +1,43 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: tweetmoodai-backend
+    env: docker
+    dockerfilePath: ./Dockerfile.backend
+    dockerContext: .
+    plan: free
+    region: oregon  # Change to your preferred region
+    healthCheckPath: /healthz
+    envVars:
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: API_PORT
+        value: 8000
+      - key: MODEL_PATH
+        value: /app/models/sentiment_model
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DEBUG
+        value: "False"
+      - key: CORS_ORIGINS
+        value: "*"  # Will be updated after frontend deploys
+
+  # Streamlit Frontend Service
+  - type: web
+    name: tweetmoodai-frontend
+    env: docker
+    dockerfilePath: ./Dockerfile.frontend
+    dockerContext: .
+    plan: free
+    region: oregon  # Should match backend region
+    envVars:
+      - key: API_URL
+        sync: false  # Set manually after backend deploys
+        value: https://tweetmoodai-backend.onrender.com
+      - key: FASTAPI_URL
+        sync: false
+        value: https://tweetmoodai-backend.onrender.com
+      - key: API_TIMEOUT
+        value: "60"
+
+

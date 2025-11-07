@@ -98,7 +98,6 @@ pytest_cache/
 # Render and Docker build artifacts
 *.tar
 docker-compose.override.yml
-render*.yaml
 
 # Frontend build artifacts (React/Streamlit UI)
 ui/node_modules/

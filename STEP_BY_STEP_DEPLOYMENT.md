@@ -76,20 +76,26 @@ streamlit run ui/app.py
 2. Go to: **https://render.com**
 3. You'll see the Render.com homepage
 
-### Step 2.2: Sign Up
-1. Click the **"Get Started for Free"** button (usually in the top right)
-2. You'll see sign-up options:
-   - **GitHub** (Recommended - easiest)
-   - **Google**
-   - **Email**
+### Step 2.2: Sign Up Options
 
-### Step 2.3: Sign Up with GitHub (Recommended)
-1. Click **"Sign up with GitHub"**
-2. You'll be redirected to GitHub
-3. Click **"Authorize Render"** to allow Render access to your GitHub account
-4. You'll be redirected back to Render.com
+You have two options:
 
-### Step 2.4: Verify Email
+#### Option A: Sign Up with Email (No GitHub Required) ✅ Recommended for Repository URL Method
+1. Click the **"Get Started for Free"** button
+2. Choose **"Sign up with Email"**
+3. Enter your email address
+4. Create a password
+5. Verify your email address
+6. Complete your profile (optional)
+
+#### Option B: Sign Up with GitHub (Alternative)
+1. Click the **"Get Started for Free"** button
+2. Choose **"Sign up with GitHub"**
+3. You'll be redirected to GitHub
+4. Click **"Authorize Render"** to allow Render access to your GitHub account
+5. You'll be redirected back to Render.com
+
+### Step 2.3: Verify Email
 1. Check your email inbox
 2. Look for an email from Render.com
 3. Click the verification link
@@ -97,9 +103,10 @@ streamlit run ui/app.py
 
 **✅ Checklist:**
 - [ ] Render.com account created
-- [ ] GitHub connected (if using GitHub sign-up)
-- [ ] Email verified
+- [ ] Email verified (or GitHub connected)
 - [ ] Logged into Render.com dashboard
+
+**💡 Note:** For repository URL method, you can use email sign-up and then connect your repository using the URL.
 
 ---
 
@@ -110,11 +117,27 @@ streamlit run ui/app.py
 2. Select **"Blueprint"** from the dropdown menu
 3. You'll see the Blueprint creation page
 
-### Step 3.2: Connect GitHub Repository
+### Step 3.2: Connect Repository
+
+**Option A: Using Repository URL (No GitHub Login Required) ✅ Recommended**
+
+1. Choose **"Public Git repository"** option
+2. Enter repository URL:
+   ```
+   https://github.com/hetulpandya44/TweetMoodAI.git
+   ```
+3. Click **"Continue"** or **"Connect"**
+4. Render will connect to your repository
+5. Render will detect the `render.yaml` file automatically
+
+**Option B: Using GitHub Integration (If You Signed Up with GitHub)**
+
 1. Render will show your GitHub repositories
 2. Find and select **"hetulpandya44/TweetMoodAI"**
 3. Click on the repository name
 4. Render will detect the `render.yaml` file automatically
+
+**💡 Note:** If using repository URL method, make sure your repository is **public** so Render.com can access it.
 
 ### Step 3.3: Review Backend Configuration
 Render will show the backend service configuration from `render.yaml`:
@@ -190,7 +213,23 @@ Render will automatically set these from `render.yaml`:
 ### Step 4.1: Create New Blueprint (Again)
 1. In Render.com dashboard, click **"New +"** button again
 2. Select **"Blueprint"** from the dropdown
-3. Select the same repository: **"hetulpandya44/TweetMoodAI"**
+
+### Step 4.1a: Connect Repository (Again)
+
+**Option A: Using Repository URL (No GitHub Login Required) ✅ Recommended**
+
+1. Choose **"Public Git repository"** option
+2. Enter the same repository URL:
+   ```
+   https://github.com/hetulpandya44/TweetMoodAI.git
+   ```
+3. Click **"Continue"** or **"Connect"**
+4. Render will detect the `render.yaml` file automatically
+
+**Option B: Using GitHub Integration (If You Signed Up with GitHub)**
+
+1. Select the same repository: **"hetulpandya44/TweetMoodAI"**
+2. Render will detect the `render.yaml` file automatically
 
 ### Step 4.2: Review Frontend Configuration
 Render will detect the frontend service from `render.yaml`:

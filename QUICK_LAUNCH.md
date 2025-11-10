@@ -13,18 +13,34 @@
 
 ## Step 1: Create Render Account (5 min)
 
+### Option A: Sign Up with Email (No GitHub Required) ✅ Recommended
+
 1. Go to **https://render.com**
 2. Click **"Get Started for Free"**
-3. Sign up with **GitHub** (easiest)
+3. Choose **"Sign up with Email"**
+4. Enter your email and create password
+5. Verify email
+
+### Option B: Sign Up with GitHub (Alternative)
+
+1. Go to **https://render.com**
+2. Click **"Get Started for Free"**
+3. Sign up with **GitHub**
 4. Authorize Render access
 5. Verify email
+
+**💡 Note:** You can use email sign-up and then connect repository using URL method (see `DEPLOY_WITH_REPO_URL.md` for details).
 
 ---
 
 ## Step 2: Deploy Backend (10 min)
 
+### Option A: Using Blueprint (Easiest)
+
 1. Click **"New +"** → **"Blueprint"**
-2. Select repository: **TweetMoodAI**
+2. **Connect repository:**
+   - **Option 1 (Repository URL)**: Enter `https://github.com/hetulpandya44/TweetMoodAI.git`
+   - **Option 2 (GitHub Integration)**: Select repository **TweetMoodAI**
 3. Render detects `render.yaml` automatically
 4. Review:
    - Name: `tweetmoodai-backend`
@@ -34,19 +50,32 @@
 6. Wait 5-10 minutes
 7. **Copy backend URL**: `https://tweetmoodai-backend.onrender.com`
 
+### Option B: Manual Web Service (If Blueprint Doesn't Work)
+
+See `DEPLOY_WITH_REPO_URL.md` for detailed manual deployment steps.
+
 ---
 
 ## Step 3: Deploy Frontend (10 min)
 
+### Option A: Using Blueprint (Easiest)
+
 1. Click **"New +"** → **"Blueprint"**
-2. Select repository: **TweetMoodAI**
-3. **Update Environment Variables**:
+2. **Connect repository:**
+   - **Option 1 (Repository URL)**: Enter `https://github.com/hetulpandya44/TweetMoodAI.git`
+   - **Option 2 (GitHub Integration)**: Select repository **TweetMoodAI**
+3. Render detects `render.yaml` automatically (both services)
+4. **Update Environment Variables**:
    - Go to frontend service → **Environment** tab
    - Set `API_URL` = `https://tweetmoodai-backend.onrender.com`
    - Set `FASTAPI_URL` = `https://tweetmoodai-backend.onrender.com`
-4. Click **"Save Changes"**
-5. Wait 5-10 minutes
-6. **Copy frontend URL**: `https://tweetmoodai-frontend.onrender.com`
+5. Click **"Save Changes"** (or **"Apply"** if using Blueprint)
+6. Wait 5-10 minutes
+7. **Copy frontend URL**: `https://tweetmoodai-frontend.onrender.com`
+
+### Option B: Manual Web Service (If Blueprint Doesn't Work)
+
+See `DEPLOY_WITH_REPO_URL.md` for detailed manual deployment steps.
 
 ---
 
@@ -81,7 +110,9 @@ Your app is live and ready for public use!
 
 ## 🐛 Issues?
 
-See `RENDER_DEPLOYMENT_GUIDE.md` for detailed troubleshooting.
+- **Repository URL Method**: See `DEPLOY_WITH_REPO_URL.md` for detailed guide
+- **Troubleshooting**: See `RENDER_DEPLOYMENT_GUIDE.md` for detailed troubleshooting
+- **Manual Deployment**: See `DEPLOY_WITH_REPO_URL.md` for step-by-step manual deployment
 
 ---
 

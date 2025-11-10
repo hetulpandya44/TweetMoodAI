@@ -52,28 +52,38 @@
 
 ### Step 2.3: Configure Backend Service
 
+**⚠️ Important:** Make sure you select **"Docker"** as the runtime, NOT Python!
+
 **Service Settings:**
 - **Name**: `tweetmoodai-backend`
+- **Language/Runtime**: **`Docker`** (NOT Python 3!) ⚠️
 - **Region**: `Oregon` (or closest to you)
 - **Branch**: `main` (or `master`)
-- **Root Directory**: `.` (root of repository)
-- **Runtime**: `Docker`
+- **Root Directory**: `.` (root of repository) - Leave empty
 - **Dockerfile Path**: `Dockerfile.backend`
 - **Docker Context**: `.` (current directory)
 - **Plan**: `Free`
 
+**💡 Note:** If you see "Python 3" selected, change it to "Docker"! Your project uses Docker containers, not Python runtime directly.
+
 ### Step 2.4: Configure Build & Deploy
+
+**⚠️ Important:** When using Docker runtime, leave these empty!
 
 **Build Command:**
 ```
-# Leave empty - Docker handles building
+(leave empty)
 ```
+- ✅ Docker handles building automatically
+- ✅ Don't enter `pip install -r requirements.txt` (that's for Python runtime)
 
 **Start Command:**
 ```
-# Leave empty - Docker handles starting
-# Or use: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+(leave empty)
 ```
+- ✅ Docker handles starting automatically
+- ✅ Don't enter `uvicorn app.main:app` (that's for Python runtime)
+- ✅ Docker uses the CMD in Dockerfile.backend
 
 **Docker Settings:**
 - **Dockerfile Path**: `Dockerfile.backend`
@@ -159,28 +169,38 @@ CORS_ORIGINS=*
 
 ### Step 3.3: Configure Frontend Service
 
+**⚠️ Important:** Make sure you select **"Docker"** as the runtime, NOT Python!
+
 **Service Settings:**
 - **Name**: `tweetmoodai-frontend`
+- **Language/Runtime**: **`Docker`** (NOT Python 3!) ⚠️
 - **Region**: `Oregon` (should match backend)
 - **Branch**: `main` (or `master`)
-- **Root Directory**: `.` (root of repository)
-- **Runtime**: `Docker`
+- **Root Directory**: `.` (root of repository) - Leave empty
 - **Dockerfile Path**: `Dockerfile.frontend`
 - **Docker Context**: `.` (current directory)
 - **Plan**: `Free`
 
+**💡 Note:** If you see "Python 3" selected, change it to "Docker"! Your project uses Docker containers.
+
 ### Step 3.4: Configure Build & Deploy
+
+**⚠️ Important:** When using Docker runtime, leave these empty!
 
 **Build Command:**
 ```
-# Leave empty - Docker handles building
+(leave empty)
 ```
+- ✅ Docker handles building automatically
+- ✅ Don't enter `pip install -r requirements.txt` (that's for Python runtime)
 
 **Start Command:**
 ```
-# Leave empty - Docker handles starting
-# Or use: streamlit run ui/app.py --server.port $PORT --server.address 0.0.0.0
+(leave empty)
 ```
+- ✅ Docker handles starting automatically
+- ✅ Don't enter `streamlit run ui/app.py` (that's for Python runtime)
+- ✅ Docker uses the CMD in Dockerfile.frontend
 
 **Docker Settings:**
 - **Dockerfile Path**: `Dockerfile.frontend`

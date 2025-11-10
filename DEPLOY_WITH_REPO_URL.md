@@ -362,10 +362,29 @@ If Render.com supports Blueprint deployment with repository URL:
 
 ### Free Tier Limitations
 
-- ⚠️ Services spin down after 15 minutes of inactivity
-- ⚠️ Cold start takes ~1 minute after spin-down
-- ⚠️ 750 instance hours/month (about 31 days continuous)
-- ⚠️ No credit card required
+**What You Get:**
+- ✅ Free hosting for your application
+- ✅ 750 instance hours/month (about 31 days continuous)
+- ✅ Automatic deployments from GitHub
+- ✅ HTTPS/SSL certificates
+- ✅ No credit card required
+
+**Limitations (Accepted for Free Tier):**
+- ⚠️ **Services spin down after 15 minutes of inactivity** - First request after spin-down takes ~1 minute (cold start)
+- ⚠️ **No SSH access** - Cannot access server via SSH
+- ⚠️ **No scaling** - Cannot scale instances up or down
+- ⚠️ **No one-off jobs** - Cannot run one-time tasks or scheduled jobs
+- ⚠️ **No persistent disks** - No persistent storage between deployments
+- ⚠️ Cold start delay - First request after spin-down takes ~1 minute
+
+**✅ These limitations are acceptable for:**
+- Project demonstrations
+- Professor submissions
+- Testing and development
+- Low-traffic applications
+- Educational purposes
+
+**💡 Note:** If you need SSH access, scaling, persistent disks, or always-on services, you can upgrade to a paid plan. For demonstration and submission purposes, the free tier is perfectly adequate.
 
 ### Model Files
 
@@ -411,11 +430,17 @@ If Render.com supports Blueprint deployment with repository URL:
 
 **Error**: Service not accessible or slow response
 
+**This is Normal for Free Tier:**
+1. ✅ Services spin down after 15 minutes of inactivity (this is expected)
+2. ✅ First request after spin-down takes ~1 minute (cold start)
+3. ✅ This is a free tier limitation and is acceptable for demonstrations
+4. ✅ Subsequent requests are fast (until next spin-down)
+
 **Solutions:**
-1. This is normal for free tier
-2. First request after spin-down takes ~1 minute
-3. Services spin down after 15 minutes of inactivity
-4. Consider upgrading to paid plan for always-on
+1. Wait ~1 minute for the service to wake up (cold start)
+2. First request will be slower, but it's normal
+3. For demonstrations, you can "wake up" the service by making a request a few minutes before your demo
+4. If you need always-on service, consider upgrading to a paid plan (not required for demonstrations)
 
 ---
 
@@ -470,6 +495,7 @@ Your TweetMoodAI application is now deployed and live on Render.com!
 - **Step-by-Step Guide**: `STEP_BY_STEP_DEPLOYMENT.md`
 - **Quick Launch**: `QUICK_LAUNCH.md`
 - **Deployment Checklist**: `DEPLOYMENT_CHECKLIST.md`
+- **Free Tier Limitations**: `FREE_TIER_LIMITATIONS.md` - Detailed information about free tier limitations
 - **Troubleshooting**: See troubleshooting section above
 
 ---

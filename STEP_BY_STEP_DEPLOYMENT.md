@@ -413,7 +413,63 @@ If frontend can't connect to backend, update CORS settings:
 
 ---
 
-## 7. Troubleshooting 🔧
+## 7. Free Tier Limitations & Notes ⚠️
+
+### What You Get with Free Tier
+
+- ✅ Free hosting for your application
+- ✅ 750 instance hours/month (about 31 days continuous)
+- ✅ Automatic deployments from GitHub
+- ✅ HTTPS/SSL certificates
+- ✅ No credit card required
+
+### Free Tier Limitations (Accepted)
+
+**These limitations are expected and acceptable for free tier:**
+
+- ⚠️ **Services spin down after 15 minutes of inactivity**
+  - Services automatically spin down when not in use
+  - First request after spin-down takes ~1 minute (cold start)
+  - Subsequent requests are fast until next spin-down
+
+- ⚠️ **No SSH access**
+  - Cannot access server via SSH
+  - Not needed for web applications
+
+- ⚠️ **No scaling**
+  - Cannot scale instances up or down
+  - Single instance is sufficient for demonstrations
+
+- ⚠️ **No one-off jobs**
+  - Cannot run one-time tasks or scheduled jobs
+  - Not needed for web applications
+
+- ⚠️ **No persistent disks**
+  - No persistent storage between deployments
+  - Not needed for stateless applications
+
+### ✅ These Limitations Are Acceptable For:
+
+- Project demonstrations
+- Professor submissions
+- Testing and development
+- Low-traffic applications
+- Educational purposes
+
+### 💡 For Demonstrations:
+
+1. **Cold Start:** First request after spin-down takes ~1 minute
+2. **Solution:** "Wake up" the service by making a request a few minutes before your demo
+3. **Normal Behavior:** This is expected and acceptable for free tier
+4. **Not a Problem:** Free tier is perfect for demonstrations and submissions
+
+### 🔄 Upgrading (Not Required):
+
+If you need SSH access, scaling, persistent disks, or always-on services, you can upgrade to a paid plan. **For demonstration and submission purposes, the free tier is perfectly adequate.**
+
+---
+
+## 8. Troubleshooting 🔧
 
 ### Issue 1: Frontend Can't Connect to Backend
 
@@ -503,19 +559,36 @@ If frontend can't connect to backend, update CORS settings:
 ### Issue 4: Services Spin Down (Free Tier)
 
 **Symptoms:**
-- Services are not accessible
-- First request is slow (~1 minute)
+- Services are not accessible after 15 minutes of inactivity
+- First request is slow (~1 minute) - this is the cold start
+
+**This is Normal for Free Tier:**
+1. ✅ **Services spin down after 15 minutes of inactivity** - This is expected behavior
+2. ✅ **Cold start takes ~1 minute** - First request after spin-down will be slower
+3. ✅ **Subsequent requests are fast** - Once awake, services respond quickly
+4. ✅ **This is acceptable for demonstrations** - Free tier is perfect for project submissions
+
+**Free Tier Limitations (Accepted):**
+- ⚠️ Services spin down after inactivity (no always-on)
+- ⚠️ No SSH access
+- ⚠️ No scaling
+- ⚠️ No one-off jobs
+- ⚠️ No persistent disks
 
 **Solutions:**
-1. **This is Normal:**
-   - Free tier services spin down after 15 min inactivity
-   - First request after spin-down takes ~1 minute (cold start)
-   - Subsequent requests are fast
+1. **For Demonstrations:**
+   - "Wake up" the service by making a request a few minutes before your demo
+   - First request will take ~1 minute, then it's fast
+   - This is normal and acceptable for free tier
 
-2. **Keep Services Alive:**
-   - Make requests periodically
+2. **Keep Services Alive (Optional):**
+   - Make requests periodically (every 10-14 minutes)
    - Use a monitoring service to ping your services
-   - Or upgrade to paid plan for always-on
+   - Or simply accept the cold start for demonstrations
+
+3. **Upgrade (Not Required):**
+   - If you need always-on service, you can upgrade to a paid plan
+   - For demonstrations and submissions, free tier is perfectly adequate
 
 ### Issue 5: Model File Too Large
 
@@ -632,6 +705,15 @@ Your TweetMoodAI application is now deployed and live on Render.com!
 - Submit it as part of your project
 
 **Good luck with your project! 🚀**
+
+---
+
+## 📚 Related Documentation
+
+- **Free Tier Limitations**: `FREE_TIER_LIMITATIONS.md` - Detailed information about free tier limitations and what to expect
+- **Repository URL Deployment**: `DEPLOY_WITH_REPO_URL.md` - Deploy using repository URL without GitHub login
+- **Quick Launch**: `QUICK_LAUNCH.md` - Quick deployment guide
+- **Deployment Checklist**: `DEPLOYMENT_CHECKLIST.md` - Deployment checklist
 
 ---
 
